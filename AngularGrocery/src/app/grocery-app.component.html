@@ -1,0 +1,37 @@
+<div>
+  <h2>Grocery List Manager</h2>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter grocery items"
+          id="txtSearch"
+          [(ngModel)]="task.name"
+        />
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="button" (click)="onClick()">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let task of tasks">
+      <span (click)="onStrike(task)" [ngClass]="{ strike: task.strike }">{{
+        task.name
+      }}</span>
+      <span
+        class="glyphicon glyphicon-pencil floatright"
+        (click)="onEdit(task)"
+      ></span>
+      <span
+        class="glyphicon glyphicon-remove floatright paddingLeft"
+        (click)="onDelete(task)"
+      ></span>
+    </li>
+  </ul>
+</div>
+<!---- <span>{{tasks | json}}</span> --->
